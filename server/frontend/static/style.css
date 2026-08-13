@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Space+Grotesk:wght@300..700&display=swap');
+body{
+  overflow-y: hidden;
+}
 img{
   width: 60%;
   align-self: center;
 }
-
+.logo{
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 30px;
+  color: rgb(44, 15, 1);
+  cursor: pointer;
+}
 .card{
   border: rgb(103, 102, 105) 3px solid;
   display: flex;  
@@ -44,8 +53,8 @@ img{
 
 .homepage_links{
   color:  rgb(97, 64, 128);
-  padding: 25%;
   font-size: larger;
+  margin-left: 20px;
   }
 
 .loginlink{
@@ -125,7 +134,33 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
-.homepage-hero{
-  background-image: url('./Homepagebg.jpg');
+section.homepage-hero{
+  background-image: linear-gradient(#00000052, #0000008e), url('Homepagebg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 85vh;
+}
+.homepage-hero-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: calc(85vh - 350px);
+}
+.hero-text{
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 1px;
+}
+@media (max-width: 991.98px) {
+    #navbarText {
+        background-color: rgb(232, 245, 237);
+        padding: 20px;
+        margin-top: 10px;
+        border-radius: 10px;
+    }
 
+    #navbarText .nav-link {
+        padding: 10px 0;
+    }
 }
