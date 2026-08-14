@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,8 +31,10 @@
     }
   </script>
 </head>
+
 <body onload="checkSession()">
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(232, 245, 237); height: 1in; position: relative; z-index: 1050;">
+  <nav class="navbar navbar-expand-lg navbar-light"
+    style="background-color:rgb(232, 245, 237); height: 1in; position: relative; z-index: 1050;">
     <div class="container-fluid">
       <h2 style="padding-right: 5%;" class="logo">Dealerships</h2>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -57,45 +60,58 @@
       </div>
     </div>
   </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-        <h1>About Us</h1>
-  Welcome to Best Cars dealership, home to the best cars in North America. We deal in selling domestic and imported cars at reasonable prices.
 
+  <section class="about-us">
+    <div class="about-us-content">
+      <div class="about-us-image">
+        <img src="/static/Images/aboutus.jpg" alt="Best Cars Dealership">
       </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
-        </div>
-      </div>
-
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
-        </div>
-      </div>
-
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
-        </div>
+      <div class="about-us-text">
+        <h2>Our Story</h2>
+        <p>At Best Cars Dealership, we believe that finding your dream vehicle should be an exceptional journey.
+          Established with a vision to redefine the car buying experience, we offer an unparalleled selection of both
+          domestic and imported premium vehicles in North America. Our commitment lies in providing transparent pricing,
+          unmatched quality, and dedicated customer service.</p>
+        <p>Whether you are looking for a reliable family SUV, a high-performance sports car, or an eco-friendly sedan,
+          our expert team is here to guide you every step of the way. We meticulously inspect every vehicle on our lot
+          to guarantee peak reliability and safety, ensuring you drive away with complete peace of mind.</p>
       </div>
     </div>
+
+    <h1 class="about-us-title">Meet Our Team</h1>
+    <div class="team-members">
+      <div class="team-member">
+        <div class="team-member-image">
+          <img src="/static/Team/Bernard Mtonga.jpg" alt="Bernard Mtonga">
+        </div>
+        <h5 class="team-member-name">Bernard Mtonga</h5>
+        <h4 class="team-member-role">Founder & CEO</h4>
+        <p class="team-member-text">Bernard has over 15 years of experience in the automotive industry. He founded Best
+          Cars with the mission of bringing transparency, trust, and premium quality to every car buying journey.</p>
+      </div>
+
+      <div class="team-member">
+        <div class="team-member-image">
+          <img src="/static/Team/Racheal Mandona.jpg" alt="Racheal Mandona">
+        </div>
+        <h5 class="team-member-name">Racheal Mandona</h5>
+        <h4 class="team-member-role">Sales Director</h4>
+        <p class="team-member-text">Racheal is passionate about helping customers find their perfect match. She leads
+          our sales team with a focus on client-centered, informative, and pressure-free guidance.</p>
+      </div>
+
+      <div class="team-member">
+        <div class="team-member-image">
+          <img src="/static/Team/Temwani Kafunda.jpg" alt="Temwani Kafunda">
+        </div>
+        <h5 class="team-member-name">Temwani Kafunda</h5>
+        <h4 class="team-member-role">Customer Success</h4>
+        <p class="team-member-text">Temwani ensures that our customers receive exceptional support both during and after
+          their purchase, maintaining our industry-leading customer satisfaction ratings.</p>
+      </div>
     </div>
-  </div>
+  </section>
+
 </body>
+
 </html>
