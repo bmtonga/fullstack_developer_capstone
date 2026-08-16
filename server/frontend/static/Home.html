@@ -14,6 +14,26 @@
 
     const logout = async (e) => {
       //Include the code for logout here.
+      // Build logout URL and Make GET request to logout endpoint
+      let logout_url = window.location.origin + "/djangoapp/logout";
+      const res = await fetch(logout_url, {
+        method: "GET",
+      });
+
+      const json = await res.json();
+      if (json) {
+        // Clear session storage and reload page
+        let username = sessionStorage.getItem('username');
+        sessionStorage.removeItem('username');
+        window.location.href = window.location.origin;
+        window.location.reload();
+        // Notify user of logout
+        alert("Logging out " + username + "...")
+      }
+      else {
+        alert("The user could not be logged out.")
+      }
+
     };
 
     let checkSession = () => {
@@ -33,7 +53,8 @@
 </head>
 
 <body onload="checkSession()">
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(232, 245, 237); height: 1in; position: relative; z-index: 1050;">
+  <nav class="navbar navbar-expand-lg navbar-light"
+    style="background-color:rgb(232, 245, 237); height: 1in; position: relative; z-index: 1050;">
     <div class="container-fluid">
       <h2 style="padding-right: 5%;" class="logo">Dealerships</h2>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -64,7 +85,8 @@
   <section class="homepage-hero">
     <div class="homepage-hero-content">
       <h5 class="text-white fw-bold fs-1 hero-text">Welcome to our Dealerships!</h5>
-      <a href="/dealers" class="btn" style="background-color:rgb(232, 245, 237);margin:10px; color:#333;">View Dealerships</a>
+      <a href="/dealers" class="btn" style="background-color:rgb(232, 245, 237);margin:10px; color:#333;">View
+        Dealerships</a>
     </div>
   </section>
   </div>
