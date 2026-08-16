@@ -326,3 +326,129 @@ section.homepage-hero{
   color: #555555;
   line-height: 1.6;
 }
+
+/* Contact Us Section Styles */
+.contact-section {
+  max-width: 1200px;
+  margin: 3em auto;
+  overflow-y: hidden;
+  margin: 5em auto;
+  
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.contact-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-image: url(aboutusbg1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.contact-details {
+  flex: 1.2;
+  padding: 50px;
+}
+
+.contact-details h1 {
+  font-family: 'Fjalla One', sans-serif;
+  color: rgb(44, 15, 1);
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.contact-details h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color:  #DAA428;
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+.contact-intro {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.contact-info-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.info-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  padding: 10px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+.info-content h3 {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 1.15rem;
+  color: rgb(44, 15, 1);
+  margin: 0 0 5px 0;
+}
+
+.info-content p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #4a4a4a;
+}
+
+.info-content a, .info-content p {
+  color: #DAA428;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.info-content a:hover {
+  color: rgb(44, 15, 1);
+}
+
+.contact-footer {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #666666b9;
+}
+
+@media (max-width: 991.98px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-details {
+    padding: 35px 25px;
+  }
+}
