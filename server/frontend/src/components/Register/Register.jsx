@@ -1,101 +1,303 @@
 import React, { useState } from "react";
 import "./Register.css";
-import user_icon from "../assets/person.png"
-import email_icon from "../assets/email.png"
-import password_icon from "../assets/password.png"
-import close_icon from "../assets/close.png"
+
+import user_icon from "../assets/person.png";
+import email_icon from "../assets/email.png";
+import password_icon from "../assets/password.png";
+import close_icon from "../assets/close.png";
 
 const Register = () => {
-// State variables for form inputs
+  // State variables for form inputs
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setlastName] = useState("");
 
-// Redirect to home
-  const gohome = ()=> {
+  // Redirect to home
+  const gohome = (e) => {
+    e.preventDefault();
     window.location.href = window.location.origin;
-  }
+  };
 
-// Handle form submission
+  // Handle form submission
   const register = async (e) => {
     e.preventDefault();
 
-    let register_url = window.location.origin+"/djangoapp/register";
+    const register_url =
+      window.location.origin + "/djangoapp/register";
 
-// Send POST request to register endpoint
-    const res = await fetch(register_url, {
+    try {
+      // Send POST request to register endpoint
+      const res = await fetch(register_url, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            "userName": userName,
-            "password": password,
-            "firstName":firstName,
-            "lastName":lastName,
-            "email":email
+          userName: userName,
+          password: password,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
         }),
-    });
+      });
 
-    const json = await res.json();
-    if (json.status) {
-	// Save username in session and reload home
-        sessionStorage.setItem('username', json.userName);
+      const json = await res.json();
+
+      if (json.status) {
+        // Save username in session and reload home
+        sessionStorage.setItem("username", json.userName);
         window.location.href = window.location.origin;
+      } else if (json.error === "Already Registered") {
+        alert("The user with same username is already registered");
+        window.location.href = window.location.origin;
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
     }
-    else if (json.error === "Already Registered") {
-      alert("The user with same username is already registered");
-      window.location.href = window.location.origin;
-    }
-};
+  };
 
-  return(
-    <div className="register_container" style={{width: "50%"}}>
-      <div className="header" style={{display: "flex",flexDirection: "row", justifyContent: "space-between"}}>
-          <span className="text" style={{flexGrow:"1"}}>SignUp</span> 
-          <div style={{display: "flex",flexDirection: "row", justifySelf: "end", alignSelf: "start" }}>
-          <a href="/" onClick={()=>{gohome()}} style={{justifyContent: "space-between", alignItems:"flex-end"}}>
-            <img style={{width:"1cm"}} src={close_icon} alt="X"/>
+  return (
+    <div className="register_page">
+
+      <div className="register_container">
+
+        {/* =========================
+            HEADER
+        ========================== */}
+        <div className="register_header">
+
+          <div className="header_content">
+            <span className="header_title">
+              Create Your Account
+            </span>
+
+            <span className="header_subtitle">
+              Join us and find your next vehicle
+            </span>
+          </div>
+
+          <a
+            href="/"
+            onClick={gohome}
+            className="close_button"
+            aria-label="Close registration"
+          >
+            <img
+              src={close_icon}
+              alt="Close"
+            />
           </a>
-          </div>
-          <hr/>
+
         </div>
 
+
+        {/* =========================
+            REGISTRATION FORM
+        ========================== */}
         <form onSubmit={register}>
-        <div className="inputs">
-          <div className="input">
-            <img src={user_icon} className="img_icon" alt='Username'/>
-            <input type="text"  name="username" placeholder="Username" className="input_field" onChange={(e) => setUserName(e.target.value)}/>
-          </div>
-          <div>
-            <img src={user_icon} className="img_icon" alt='First Name'/>
-            <input type="text"  name="first_name" placeholder="First Name" className="input_field" onChange={(e) => setFirstName(e.target.value)}/>
+
+          <div className="inputs">
+
+            {/* USERNAME */}
+            <div className="input_group">
+
+              <label htmlFor="username">
+                Username
+              </label>
+
+              <div className="input_wrapper">
+
+                <img
+                  src={user_icon}
+                  className="input_icon"
+                  alt=""
+                />
+
+                <input
+                  id="username"
+                  type="text"
+                  name="username"
+                  placeholder="Enter your username"
+                  className="input_field"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  autoComplete="username"
+                  required
+                />
+
+              </div>
+
+            </div>
+
+
+            {/* FIRST NAME */}
+            <div className="input_group">
+
+              <label htmlFor="first_name">
+                First Name
+              </label>
+
+              <div className="input_wrapper">
+
+                <img
+                  src={user_icon}
+                  className="input_icon"
+                  alt=""
+                />
+
+                <input
+                  id="first_name"
+                  type="text"
+                  name="first_name"
+                  placeholder="Enter your first name"
+                  className="input_field"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  autoComplete="given-name"
+                  required
+                />
+
+              </div>
+
+            </div>
+
+
+            {/* LAST NAME */}
+            <div className="input_group">
+
+              <label htmlFor="last_name">
+                Last Name
+              </label>
+
+              <div className="input_wrapper">
+
+                <img
+                  src={user_icon}
+                  className="input_icon"
+                  alt=""
+                />
+
+                <input
+                  id="last_name"
+                  type="text"
+                  name="last_name"
+                  placeholder="Enter your last name"
+                  className="input_field"
+                  value={lastName}
+                  onChange={(e) => setlastName(e.target.value)}
+                  autoComplete="family-name"
+                  required
+                />
+
+              </div>
+
+            </div>
+
+
+            {/* EMAIL */}
+            <div className="input_group">
+
+              <label htmlFor="email">
+                Email Address
+              </label>
+
+              <div className="input_wrapper">
+
+                <img
+                  src={email_icon}
+                  className="input_icon"
+                  alt=""
+                />
+
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  className="input_field"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="email"
+                  required
+                />
+
+              </div>
+
+            </div>
+
+
+            {/* PASSWORD */}
+            <div className="input_group">
+
+              <label htmlFor="password">
+                Password
+              </label>
+
+              <div className="input_wrapper">
+
+                <img
+                  src={password_icon}
+                  className="input_icon"
+                  alt=""
+                />
+
+                <input
+                  id="password"
+                  name="psw"
+                  type="password"
+                  placeholder="Create a password"
+                  className="input_field"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="new-password"
+                  required
+                />
+
+              </div>
+
+            </div>
+
           </div>
 
-          <div>
-            <img src={user_icon} className="img_icon" alt='Last Name'/>
-            <input type="text"  name="last_name" placeholder="Last Name" className="input_field" onChange={(e) => setlastName(e.target.value)}/>
+
+          {/* =========================
+              REGISTER BUTTON
+          ========================== */}
+          <div className="submit_panel">
+
+            <button
+              className="submit"
+              type="submit"
+            >
+              Create Account
+            </button>
+
           </div>
 
-          <div>
-            <img src={email_icon} className="img_icon" alt='Email'/>
-            <input type="email"  name="email" placeholder="email" className="input_field" onChange={(e) => setEmail(e.target.value)}/>
+
+          {/* =========================
+              LOGIN LINK
+          ========================== */}
+          <div className="login_prompt">
+
+            <span>
+              Already have an account?
+            </span>
+
+            <a href="/login">
+              Login
+            </a>
+
           </div>
 
-          <div className="input">
-            <img src={password_icon} className="img_icon" alt='password'/>
-            <input name="psw" type="password"  placeholder="Password" className="input_field" onChange={(e) => setPassword(e.target.value)}/>
-          </div>
+        </form>
 
-        </div>
-        <div className="submit_panel">
-          <input className="submit" type="submit" value="Register"/>
-        </div>
-      </form>
       </div>
-  )
-}
+
+    </div>
+  );
+};
 
 export default Register;

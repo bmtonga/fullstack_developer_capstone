@@ -88,7 +88,7 @@
   box-sizing: border-box;
 
   color: var(--dark-text);
-
+border: none;
   border-radius: 9px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
@@ -99,7 +99,9 @@
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
-
+.input_field{
+  background-color: #f9f9f9;
+}
 
 /* Placeholder */
 

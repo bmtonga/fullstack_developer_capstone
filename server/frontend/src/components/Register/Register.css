@@ -1,65 +1,560 @@
-.register_container{
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 2%;
-  background-color: darkturquoise;
-  min-width: 350px;
-  width: 30%;
+/* =========================================================
+   PREMIUM CAR DEALERSHIP — REGISTRATION PAGE
+   ========================================================= */
+
+:root {
+    --deep-green: #0B3D2E;
+    --sage-green: #A8C3A0;
+    --light-sage: #E8F0E5;
+    --warm-gold: #D4A72C;
+    --soft-gold: #E6C766;
+    --white: #FFFFFF;
+    --dark-text: #17352B;
+    --muted-text: #66756D;
+
+    --border-color: #C8D6C4;
+    --gold-hover: #B88F20;
+    --error-red: #B42318;
 }
 
-.inputs{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.register_page {
+    width: 100%;
+    min-height: 95vh;
+    overflow-y: hidden;
+    box-sizing: border-box;
+
+    padding: 2rem 1rem;
+
+    background-color: var(--light-sage);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.input{
-  display: flex;
-  flex-direction:row;
-  align-items: center;
+
+/* =========================================================
+   REGISTRATION CARD
+   ========================================================= */
+
+.register_page .register_container {
+    width: min(470px, 100%);
+    min-width: 0;
+
+    margin:0 auto;
+    padding: 2.5rem;
+
+    box-sizing: border-box;
+
+    background-color: var(--white);
+
+    border: 1px solid rgba(168, 195, 160, 0.55);
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 30px rgba(11, 61, 46, 0.08);
 }
 
-.input_field{
-  height:40px;
-  width:200px;
-  margin:.5cm;
-  font-size: medium;
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.register_page .register_header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin-bottom: 2rem;
 }
 
-.submit_panel{
-  display: flex;
-  flex-direction:column;
-  margin-top: 5%;
-  margin-bottom: 5%;
+
+.register_page .header_content {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
 }
 
-.submit{
-  margin-left: 30%;
-  margin-right: 30%;
-  cursor: pointer;
-  font-size: large;
-  color: rgb(97, 64, 128);
-  border-radius: 10px;
-  height:50px;
+
+.register_page .header_title {
+    color: var(--deep-green);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    line-height: 1.25;
 }
 
-.submit:hover {
-  background-color: wheat;
+
+.register_page .header_subtitle {
+    margin-top: 0.4rem;
+
+    color: var(--muted-text);
+
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
-.header{
-  font: 4em sans-serif;
-  color: white;
-  margin: .5cm;
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+.register_page .close_button {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 1rem;
+
+    background-color: var(--light-sage);
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
 }
 
-.img_icon{
-  width:40px;
-  margin:.1cm;
-  background-color:#0C9;
-  color:#FFF;
-  border-radius:50px;
-  text-align:center;
-  box-shadow: 2px 2px 3px #999;  
+
+.register_page .close_button:hover {
+    background-color: var(--white);
+
+    border-color: var(--sage-green);
+}
+
+
+.register_page .close_button img {
+    width: 16px;
+    height: 16px;
+
+    object-fit: contain;
+
+    opacity: 0.75;
+
+    transition:
+        opacity 0.2s ease;
+}
+
+
+.register_page .close_button:hover img {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.register_page form {
+    width: 100%;
+}
+
+
+/* =========================================================
+   INPUTS CONTAINER
+   ========================================================= */
+
+.register_page .inputs {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   INPUT GROUP
+   ========================================================= */
+
+.register_page .input_group {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    margin-bottom: 1.1rem;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.register_page .input_group label {
+    margin-bottom: 0.45rem;
+
+    color: var(--deep-green);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 0.88rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   INPUT WRAPPER
+   ========================================================= */
+
+.register_page .input_wrapper {
+    position: relative;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   INPUT ICON
+   ========================================================= */
+
+.register_page .input_icon {
+    position: absolute;
+
+    left: 1rem;
+    top: 50%;
+
+    width: 18px;
+    height: 18px;
+
+    transform: translateY(-50%);
+
+    object-fit: contain;
+
+    opacity: 0.65;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease;
+}
+
+
+/* Slightly emphasize icon on focus */
+
+.register_page .input_wrapper:focus-within .input_icon {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   INPUT FIELD
+   ========================================================= */
+
+.register_page .input_field {
+    width: 100%;
+    height: 46px;
+
+    margin: 0;
+    padding: 0 1rem 0 2.75rem;
+
+    box-sizing: border-box;
+
+    background-color:#f7f7f7;
+
+    color: var(--dark-text);
+
+    border: none;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 0.94rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.register_page .input_field::placeholder {
+    color: var(--muted-text);
+
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+   ========================================================= */
+
+.register_page .input_field:focus {
+    background-color: var(--white);
+
+    border-color: var(--deep-green);
+
+    box-shadow:
+        0 0 0 3px rgba(212, 167, 44, 0.17);
+}
+
+
+/* =========================================================
+   INPUT HOVER
+   ========================================================= */
+
+.register_page .input_field:hover:not(:focus) {
+    border-color: var(--sage-green);
+}
+
+
+/* =========================================================
+   SUBMIT PANEL
+   ========================================================= */
+
+.register_page .submit_panel {
+    width: 100%;
+
+    margin-top: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+
+/* =========================================================
+   REGISTER BUTTON
+   ========================================================= */
+
+.register_page .submit {
+    width: 100%;
+    min-height: 48px;
+
+    margin: 0;
+    padding: 0.75rem 1.25rem;
+
+    box-sizing: border-box;
+
+    background-color: var(--warm-gold);
+
+    color: var(--deep-green);
+
+    border: 1px solid var(--warm-gold);
+    border-radius: 9px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 0.98rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+   ========================================================= */
+
+.register_page .submit:hover {
+    background-color: var(--gold-hover);
+    border-color: var(--gold-hover);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   BUTTON ACTIVE
+   ========================================================= */
+
+.register_page .submit:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   BUTTON KEYBOARD FOCUS
+   ========================================================= */
+
+.register_page .submit:focus-visible {
+    outline: 3px solid rgba(212, 167, 44, 0.3);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   LOGIN PROMPT
+   ========================================================= */
+
+.register_page .login_prompt {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 0.35rem;
+
+    color: var(--muted-text);
+
+    font-size: 0.88rem;
+
+    text-align: center;
+}
+
+
+.register_page .login_prompt a {
+    color: var(--deep-green);
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.register_page .login_prompt a:hover {
+    color: var(--warm-gold);
+}
+
+
+/* =========================================================
+   VALIDATION / ERROR STATES
+   ========================================================= */
+
+.register_page .input_field:invalid:not(:placeholder-shown) {
+    border-color: var(--error-red);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .register_page {
+        padding: 2rem 1rem;
+    }
+
+    .register_page .register_container {
+        width: min(470px, 100%);
+
+        margin: 0 auto;
+
+        padding: 2rem;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .register_page {
+        min-height: 100vh;
+
+        padding: 1rem 0.75rem;
+    }
+
+
+    .register_page .register_container {
+        width: 100%;
+
+        margin: 0;
+
+        padding: 1.5rem;
+
+        border-radius: 9px;
+    }
+
+
+    .register_page .header_title {
+        font-size: 1.55rem;
+    }
+
+
+    .register_page .header_subtitle {
+        font-size: 0.84rem;
+    }
+
+
+    .register_page .input_field {
+        height: 46px;
+    }
+
+
+    .register_page .submit {
+        min-height: 48px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .register_page {
+        padding: 0.75rem 0.5rem;
+    }
+
+
+    .register_page .register_container {
+        padding: 1.25rem;
+    }
+
+
+    .register_page .header_title {
+        font-size: 1.4rem;
+    }
+
+
+    .register_page .header_subtitle {
+        font-size: 0.8rem;
+    }
+
+
+    .register_page .input_group {
+        margin-bottom: 0.9rem;
+    }
+
 }
