@@ -18,14 +18,13 @@
   --gold-hover: #B88F20;
 }
 
-
 /* =========================================================
    PAGE / LOGIN AREA
    ========================================================= */
 
 .login_panel {
   width: min(420px, calc(100% - 32px));
-  margin: 5rem auto;
+  margin: 7em auto;
   padding: 2.5rem;
 
   background-color: var(--white);
@@ -88,7 +87,7 @@
   box-sizing: border-box;
 
   color: var(--dark-text);
-border: none;
+  border: none;
   border-radius: 9px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
@@ -99,7 +98,8 @@ border: none;
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
-.input_field{
+
+.input_field {
   background-color: #f9f9f9;
 }
 
