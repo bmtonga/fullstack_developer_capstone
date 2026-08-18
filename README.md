@@ -1,73 +1,53 @@
-# fullstack_developer_capstone
-# The Auto Hub
+# xrwvm-fullstack_developer_capstone
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Stack](https://img.shields.io/badge/Stack-MERN-blue.svg)](https://react.dev)
-[![Build](https://img.shields.io/badge/Build-Vite-646CFF.svg)](https://vitejs.dev)
+[![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/Django-5.0-092E20.svg)](https://www.djangoproject.com/)
+[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED.svg)](https://www.docker.com/)
 
-A comprehensive **Car Dealership Management System** designed to streamline operations for both dealerships and customers. The platform serves as a bridge between automotive buyers and sellers, offering advanced features for vehicle discovery, inventory management, customer engagement, and review analytics.
+A comprehensive **Car Dealership Management & Review Platform** built using Python, Django, Express/MongoDB microservices, and React. The system features automated sentiment analysis for dealer reviews, state-based dealership filtering, and containerized deployment workflows using Docker.
 
 ---
 
 ## 🚀 Key Features
 
 ### For Customers
-* **Browse & Discover:** Explore a diverse inventory of new and pre-owned vehicles complete with detailed technical specifications and high-quality image galleries.
-* **Advanced Search & Filtering:** Filter vehicles dynamically by make, model, year, price range, state, and mileage.
-* **Detailed Vehicle Pages:** Access full vehicle specifications, real-time availability status, pricing, and seller details.
-* **Sentiment-Analyzed Reviews:** Read authentic customer feedback backed by automated sentiment analysis (Positive, Neutral, Negative).
-* **Wishlist & Favorites:** Save vehicles of interest to personal profiles for quick reference.
+* **Browse & Discover:** Search vehicle inventories and locate dealerships across various US states.
+* **Sentiment-Analyzed Reviews:** View customer feedback categorized into Positive, Neutral, or Negative sentiment.
+* **Submit Reviews:** Registered users can post detailed reviews for specific car makes, models, and purchase years.
+* **User Authentication:** Secure signup, login, and session persistence.
 
 ### For Dealerships & Admins
-* **Inventory Management:** Effortlessly create, update, and remove vehicle listings across multiple branches.
-* **Vehicle Attribute Control:** Manage price updates, availability status, media assets, descriptions, and mileage records.
-* **User & Review Management:** Review registered user accounts and moderate incoming customer feedback.
-* **Performance Reporting:** Track platform interaction metrics and inventory turnover trends.
+* **Dealership Directory Management:** Manage dealership records, addresses, and state listings.
+* **Vehicle Inventory Control:** Add, update, and track car makes, models, and technical specifications.
+* **Review Moderation:** Monitor incoming customer reviews and feedback trends.
 
 ---
 
 ## 🛠️ Tech Stack
 
-Built on a modern **MERN** microservices and monolithic hybrid architecture:
-
-### Frontend
-* **Framework:** [React.js](https://react.dev/) (v18+)
-* **Build Tool:** [Vite](https://vitejs.dev/)
-* **Routing:** [React Router](https://reactrouter.com/) (v6+)
-* **Styling:** Bootstrap 5 & CSS3
-* **Language:** JavaScript (ES6+)
-
-### Backend & Database
-* **Runtime:** [Node.js](https://nodejs.org/)
-* **Framework:** [Express.js](https://expressjs.com/) & Django
-* **Database:** [MongoDB](https://www.mongodb.com/) (Atlas / Local)
-* **ORM/ODM:** [Mongoose](https://mongoosejs.com/)
-* **Authentication:** JSON Web Tokens (JWT) & Session Storage
-* **API Architecture:** RESTful APIs
+* **Core Backend:** Python 3.12, Django Framework, Gunicorn WSGI
+* **Microservices:** Express.js, Node.js, MongoDB (Dealership & Review Microservices)
+* **Frontend:** React.js, Bootstrap 5, JavaScript (ES6+)
+* **Containerization:** Docker, Dockerfiles
+* **CI/CD Pipeline:** GitHub Actions (`flake8` for Python, `jshint` for JavaScript)
 
 ---
 
-## 📂 Project Structure
+## 📂 Repository Structure
 
 ```text
-TheAutoHub/
-├── frontend/                  # React + Vite Client Application
-│   ├── src/
-│   │   ├── assets/           # Static media, icons, and stylesheets
-│   │   ├── components/       # Reusable UI components (Header, Cards, Modals)
-│   │   ├── pages/            # View components (Home, Dealers, PostReview, Login)
-│   │   ├── services/         # API integration services
-│   │   ├── App.jsx           # Application route definitions
-│   │   └── main.jsx          # React DOM entry point
-│   ├── package.json
-│   └── vite.config.js
-├── backend/                   # Express.js Server & Microservices
-│   ├── config/               # Database and environment configurations
-│   ├── controllers/          # API business logic and route handlers
-│   ├── models/               # Mongoose database schemas
-│   ├── routes/               # Express endpoint definitions
-│   ├── server.js             # Express application entry point
-│   └── package.json
+xrwvm-fullstack_developer_capstone/
+├── .github/
+│   └── workflows/
+│       └── main.yaml            # GitHub Actions CI/CD pipeline
+├── server/
+│   ├── Dockerfile               # Production Docker image build file
+│   ├── requirements.txt         # Python backend dependencies
+│   ├── entrypoint.sh            # Container startup execution script
+│   ├── djangoproj/              # Django project core settings
+│   ├── djangoapp/               # Main Django application app
+│   └── database/                # Express.js & MongoDB microservices
+├── frontend/                    # React frontend application
 ├── .gitignore
-├── LICENSE                   # Project software license
-└── README.md                 # Project documentation
+└── README.md                    # Project documentation
