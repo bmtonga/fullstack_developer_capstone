@@ -133,9 +133,7 @@ app.post('/insert_review', async (req, res) => {
       .findOne()
       .sort({ id: -1 });
 
-    const new_id = latestReview
-      ? latestReview.id + 1
-      : 1;
+    const new_id = latestReview ? latestReview.id + 1 : 1;
 
     const review = new Reviews({
       id: new_id,
