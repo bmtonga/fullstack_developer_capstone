@@ -30,7 +30,6 @@ jobs:
 
     - name: Run Linter
       run: |
-        # Run flake8 directly, excluding migrations and ignoring minor whitespace/newline issues
         flake8 . --exclude=*/migrations/*,.git,__pycache__,venv,.venv \
                  --max-line-length=120 \
                  --ignore=W292,W293,E303,W191,E101,E131,W391
@@ -54,6 +53,7 @@ jobs:
 
     - name: Run Linter
       run: |
-        # Pass ES8 configuration via --extra-config
-        find ./server/database -name "*.js" -exec jshint --extra-config '{"esversion": 8}' {} +
+        # Generate a temporary .jshintrc file with ES8 enabled
+        echo '{"esversion": 8, "node": true}' > .jshintrc
+        find ./server/database -name "*.js" -exec jshint --config .jshintrc {} +
         echo "Linted all the js files successfully"
