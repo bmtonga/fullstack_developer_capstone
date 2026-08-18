@@ -12,14 +12,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.12
+        python-version: '3.12'
 
     - name: Install dependencies
       run: |
@@ -32,28 +31,28 @@ jobs:
     - name: Run Linter
       run: |
         pwd
-        # This command finds all Python files recursively and runs flake8 on them
-        find . -name "*.py" -exec flake8 {} +
+        # Run flake8 directly on the directory tree, excluding migrations, git, and cache folders
+        flake8 . --exclude=*/migrations/*,.git,__pycache__,venv,.venv --max-line-length=120
         echo "Linted all the python files successfully"
 
   lint_js:
-      name: Lint JavaScript Files
-      runs-on: ubuntu-latest
+    name: Lint JavaScript Files
+    runs-on: ubuntu-latest
 
-      steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
 
-      - name: Install JSHint
-        run: npm install jshint --global
+    - name: Install JSHint
+      run: npm install jshint --global
 
-      - name: Run Linter
-        run: |
-          # This command finds all JavaScript files recursively and runs JSHint on them
-          find ./server/database -name "*.js" -exec jshint {} +
-          echo "Linted all the js files successfully"
+    - name: Run Linter
+      run: |
+        # Find and lint JavaScript files recursively
+        find ./server/database -name "*.js" -exec jshint {} +
+        echo "Linted all the js files successfully"
