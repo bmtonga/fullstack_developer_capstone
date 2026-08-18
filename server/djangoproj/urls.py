@@ -22,6 +22,7 @@ urlpatterns = [
     path("register/", TemplateView.as_view(template_name="index.html"), name="register_page"),
     path("dealers/", TemplateView.as_view(template_name="index.html"), name="dealers_page"),
     path("dealer/<int:dealer_id>/", TemplateView.as_view(template_name="index.html"), name="dealer_page"),
+    path("postreview/<int:dealer_id>/", TemplateView.as_view(template_name="index.html"), name="post_review"),
 ]
 
 if settings.DEBUG:

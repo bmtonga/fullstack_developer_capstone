@@ -32,12 +32,10 @@ mongoose
   .then(async () => {
     console.log('Connected to MongoDB');
 
-    // Initialize reviews
     try {
       await Reviews.deleteMany({});
       await Reviews.insertMany(reviews_data.reviews);
 
-      // Initialize dealerships
       await Dealerships.deleteMany({});
       await Dealerships.insertMany(dealerships_data.dealerships);
 
@@ -50,12 +48,10 @@ mongoose
     console.error('MongoDB connection error:', error);
   });
 
-
 // Home
 app.get('/', (req, res) => {
   res.send('Welcome to the Mongoose API');
 });
-
 
 // Fetch all reviews
 app.get('/fetchReviews', async (req, res) => {
@@ -70,14 +66,12 @@ app.get('/fetchReviews', async (req, res) => {
   }
 });
 
-
 // Fetch reviews by dealership
 app.get('/fetchReviews/dealer/:id', async (req, res) => {
   try {
     const documents = await Reviews.find({
       dealership: req.params.id
     });
-
     res.json(documents);
   } catch (error) {
     console.error(error);
@@ -86,7 +80,6 @@ app.get('/fetchReviews/dealer/:id', async (req, res) => {
     });
   }
 });
-
 
 // Fetch all dealerships
 app.get('/fetchDealers', async (req, res) => {
@@ -101,14 +94,12 @@ app.get('/fetchDealers', async (req, res) => {
   }
 });
 
-
 // Fetch dealerships by state
 app.get('/fetchDealers/:state', async (req, res) => {
   try {
     const documents = await Dealerships.find({
       state: req.params.state
     });
-
     res.json(documents);
   } catch (error) {
     console.error(error);
@@ -118,14 +109,12 @@ app.get('/fetchDealers/:state', async (req, res) => {
   }
 });
 
-
 // Fetch dealership by ID
 app.get('/fetchDealer/:id', async (req, res) => {
   try {
     const documents = await Dealerships.find({
       id: req.params.id
     });
-
     res.json(documents);
   } catch (error) {
     console.error(error);
@@ -135,13 +124,11 @@ app.get('/fetchDealer/:id', async (req, res) => {
   }
 });
 
-
 // Insert review
 app.post('/insert_review', async (req, res) => {
   try {
     const data = req.body;
 
-    // Get latest review
     const latestReview = await Reviews
       .findOne()
       .sort({ id: -1 });
@@ -163,18 +150,15 @@ app.post('/insert_review', async (req, res) => {
     });
 
     const savedReview = await review.save();
-
     res.status(201).json(savedReview);
 
   } catch (error) {
     console.error('Error inserting review:', error);
-
     res.status(500).json({
       error: 'Error inserting review'
     });
   }
 });
-
 
 // Start server
 app.listen(port, () => {
