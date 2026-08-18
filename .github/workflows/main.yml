@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v6
+      uses: actions/checkout@v4
     
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -41,7 +41,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v6
+      uses: actions/checkout@v4
 
     - name: Install Node.js
       uses: actions/setup-node@v4
@@ -53,7 +53,7 @@ jobs:
 
     - name: Run Linter
       run: |
-        # Generate a temporary .jshintrc file with ES8 and laxbreak enabled
+        # Generate temporary .jshintrc file with ES8 and laxbreak enabled
         echo '{"esversion": 8, "node": true, "laxbreak": true}' > .jshintrc
         find ./server/database -name "*.js" -exec jshint --config .jshintrc {} +
         echo "Linted all the js files successfully"
