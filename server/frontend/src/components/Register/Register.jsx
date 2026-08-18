@@ -7,28 +7,23 @@ import password_icon from "../assets/password.png";
 import close_icon from "../assets/close.png";
 
 const Register = () => {
-  // State variables for form inputs
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setlastName] = useState("");
 
-  // Redirect to home
   const gohome = (e) => {
     e.preventDefault();
     window.location.href = window.location.origin;
   };
 
-  // Handle form submission
   const register = async (e) => {
     e.preventDefault();
 
-    const register_url =
-      window.location.origin + "/djangoapp/register";
+    const register_url = window.location.origin + "/djangoapp/register";
 
     try {
-      // Send POST request to register endpoint
       const res = await fetch(register_url, {
         method: "POST",
         headers: {
@@ -45,34 +40,28 @@ const Register = () => {
 
       const json = await res.json();
 
-      if (json.status) {
-        // Save username in session and reload home
+      if (json.status === "Authenticated") {
         sessionStorage.setItem("username", json.userName);
         window.location.href = window.location.origin;
       } else if (json.error === "Already Registered") {
-        alert("The user with same username is already registered");
-        window.location.href = window.location.origin;
+        alert("The user with the same username is already registered.");
+      } else {
+        alert("Registration failed. Please try again.");
       }
     } catch (error) {
       console.error("Registration error:", error);
+      alert("A network error occurred while registering.");
     }
   };
 
   return (
     <div className="register_page">
-
       <div className="register_container">
-
-        {/* =========================
-            HEADER
-        ========================== */}
         <div className="register_header">
-
           <div className="header_content">
             <span className="header_title">
               Create Your Account
             </span>
-
             <span className="header_subtitle">
               Join us and find your next vehicle
             </span>
@@ -89,32 +78,15 @@ const Register = () => {
               alt="Close"
             />
           </a>
-
         </div>
 
-
-        {/* =========================
-            REGISTRATION FORM
-        ========================== */}
         <form onSubmit={register}>
-
           <div className="inputs">
-
             {/* USERNAME */}
             <div className="input_group">
-
-              <label htmlFor="username">
-                Username
-              </label>
-
+              <label htmlFor="username">Username</label>
               <div className="input_wrapper">
-
-                <img
-                  src={user_icon}
-                  className="input_icon"
-                  alt=""
-                />
-
+                <img src={user_icon} className="input_icon" alt="" />
                 <input
                   id="username"
                   type="text"
@@ -126,27 +98,14 @@ const Register = () => {
                   autoComplete="username"
                   required
                 />
-
               </div>
-
             </div>
-
 
             {/* FIRST NAME */}
             <div className="input_group">
-
-              <label htmlFor="first_name">
-                First Name
-              </label>
-
+              <label htmlFor="first_name">First Name</label>
               <div className="input_wrapper">
-
-                <img
-                  src={user_icon}
-                  className="input_icon"
-                  alt=""
-                />
-
+                <img src={user_icon} className="input_icon" alt="" />
                 <input
                   id="first_name"
                   type="text"
@@ -158,27 +117,14 @@ const Register = () => {
                   autoComplete="given-name"
                   required
                 />
-
               </div>
-
             </div>
-
 
             {/* LAST NAME */}
             <div className="input_group">
-
-              <label htmlFor="last_name">
-                Last Name
-              </label>
-
+              <label htmlFor="last_name">Last Name</label>
               <div className="input_wrapper">
-
-                <img
-                  src={user_icon}
-                  className="input_icon"
-                  alt=""
-                />
-
+                <img src={user_icon} className="input_icon" alt="" />
                 <input
                   id="last_name"
                   type="text"
@@ -190,27 +136,14 @@ const Register = () => {
                   autoComplete="family-name"
                   required
                 />
-
               </div>
-
             </div>
-
 
             {/* EMAIL */}
             <div className="input_group">
-
-              <label htmlFor="email">
-                Email Address
-              </label>
-
+              <label htmlFor="email">Email Address</label>
               <div className="input_wrapper">
-
-                <img
-                  src={email_icon}
-                  className="input_icon"
-                  alt=""
-                />
-
+                <img src={email_icon} className="input_icon" alt="" />
                 <input
                   id="email"
                   type="email"
@@ -222,27 +155,14 @@ const Register = () => {
                   autoComplete="email"
                   required
                 />
-
               </div>
-
             </div>
-
 
             {/* PASSWORD */}
             <div className="input_group">
-
-              <label htmlFor="password">
-                Password
-              </label>
-
+              <label htmlFor="password">Password</label>
               <div className="input_wrapper">
-
-                <img
-                  src={password_icon}
-                  className="input_icon"
-                  alt=""
-                />
-
+                <img src={password_icon} className="input_icon" alt="" />
                 <input
                   id="password"
                   name="psw"
@@ -254,48 +174,22 @@ const Register = () => {
                   autoComplete="new-password"
                   required
                 />
-
               </div>
-
             </div>
-
           </div>
 
-
-          {/* =========================
-              REGISTER BUTTON
-          ========================== */}
           <div className="submit_panel">
-
-            <button
-              className="submit"
-              type="submit"
-            >
+            <button className="submit" type="submit">
               Create Account
             </button>
-
           </div>
 
-
-          {/* =========================
-              LOGIN LINK
-          ========================== */}
           <div className="login_prompt">
-
-            <span>
-              Already have an account?
-            </span>
-
-            <a href="/login">
-              Login
-            </a>
-
+            <span>Already have an account?</span>
+            <a href="/login">Login</a>
           </div>
-
         </form>
-
       </div>
-
     </div>
   );
 };
